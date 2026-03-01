@@ -320,8 +320,8 @@ document.addEventListener('DOMContentLoaded', () => {
         
         // Create a temporary link to download the resume
         const link = document.createElement('a');
-        link.href = 'resume.pdf';
-        link.download = 'resume.pdf';
+        link.href = 'Astashenok.pdf';
+        link.download = 'Astashenok.pdf';
         document.body.appendChild(link);
         link.click();
         document.body.removeChild(link);
