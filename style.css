@@ -55,7 +55,7 @@ img {
 }
 
 .section {
-  padding: 96px 0;
+  padding: 45px 0;
   scroll-margin-top: 96px;
 }
 
@@ -639,7 +639,7 @@ img {
 
 @media (max-width: 640px) {
   .section {
-    padding: 72px 0;
+    padding: 45px 0;
   }
 
   .hero {
