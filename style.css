@@ -197,77 +197,46 @@ img {
   border-color: var(--border);
 }
 
-.btn:hover {
+.btn:hover:not(#download-resume-btn) {
   transform: translateY(-1px);
   box-shadow: var(--shadow);
 }
 
-/* Interactive Download Resume Button Styles */
+/* Download Resume — fire glow (no movement) */
 #download-resume-btn {
-  position: relative;
-  transition: opacity 0.4s ease, transform 0.4s ease;
-  pointer-events: auto; /* Allow hover events */
-  cursor: default; /* Show default cursor until ready */
-}
-
-/* Disable pointer events during animation phases */
-#download-resume-btn.animating {
-  pointer-events: none;
-}
-
-/* Fade out state */
-#download-resume-btn.fade-out {
-  opacity: 0;
-}
-
-/* First hover: move up 300px */
-#download-resume-btn.move-up {
-  opacity: 1;
-  transform: translateY(-300px);
-}
-
-/* Second hover: move down 200px from original position */
-#download-resume-btn.move-down {
-  opacity: 1;
-  transform: translateY(200px);
-}
-
-/* Third hover: ready state - fully clickable with fire effect */
-#download-resume-btn.ready {
+  cursor: pointer;
   opacity: 1;
   transform: translateY(0);
-  pointer-events: auto; /* Enable clicks only in ready state */
-  cursor: pointer;
-  /* Fire effect: gradient background */
   background: linear-gradient(135deg, #ff6b35 0%, #f7931e 25%, #ff4500 50%, #ff6b35 75%, #f7931e 100%);
   background-size: 200% 200%;
   color: #fff;
   border-color: #ff4500;
-  /* Fire glow animation */
   animation: fireGlow 1.5s ease-in-out infinite, fireGradient 3s ease infinite;
-  box-shadow: 0 0 20px rgba(255, 107, 53, 0.6), 
+  box-shadow: 0 0 20px rgba(255, 107, 53, 0.6),
               0 0 40px rgba(255, 69, 0, 0.4),
               0 0 60px rgba(247, 147, 30, 0.3),
               0 4px 15px rgba(255, 107, 53, 0.4);
 }
 
-/* Fire glow pulsing animation */
+#download-resume-btn:hover {
+  transform: none;
+}
+
 @keyframes fireGlow {
   0%, 100% {
-    box-shadow: 0 0 20px rgba(255, 107, 53, 0.6), 
+    box-shadow: 0 0 20px rgba(255, 107, 53, 0.6),
                 0 0 40px rgba(255, 69, 0, 0.4),
                 0 0 60px rgba(247, 147, 30, 0.3),
                 0 4px 15px rgba(255, 107, 53, 0.4);
   }
   50% {
-    box-shadow: 0 0 30px rgba(255, 107, 53, 0.8), 
+    box-shadow: 0 0 30px rgba(255, 107, 53, 0.8),
                 0 0 50px rgba(255, 69, 0, 0.6),
                 0 0 70px rgba(247, 147, 30, 0.5),
                 0 4px 20px rgba(255, 107, 53, 0.6);
   }
 }
 
-/* Fire gradient animation for flickering effect */
 @keyframes fireGradient {
   0% {
     background-position: 0% 50%;
@@ -277,24 +246,6 @@ img {
   }
   100% {
     background-position: 0% 50%;
-  }
-}
-
-/* Mobile adaptive styles for download button */
-@media (max-width: 640px) {
-  /* Make button non-transparent on mobile */
-  #download-resume-btn {
-    background: #fff;
-    opacity: 1 !important;
-  }
-  
-  /* Increased movement values for mobile */
-  #download-resume-btn.move-up {
-    transform: translateY(-180px);
-  }
-  
-  #download-resume-btn.move-down {
-    transform: translateY(130px);
   }
 }
 
