@@ -11,6 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const navToggle = document.querySelector('.nav-toggle');
   const navLinks = document.querySelector('.nav-links');
   const header = document.querySelector('.site-header');
+  const scrollTopBtn = document.getElementById('scroll-top');
   const links = document.querySelectorAll('.nav-link');
   const sections = document.querySelectorAll('section[id]');
 
@@ -69,11 +70,24 @@ document.addEventListener('DOMContentLoaded', () => {
       const scrolled = window.scrollY > 12;
       header.style.boxShadow = scrolled ? '0 6px 18px rgba(17,24,39,0.08)' : 'none';
     }
+    if (scrollTopBtn) {
+      scrollTopBtn.classList.toggle('is-visible', window.scrollY > 420);
+    }
     updateActiveSection();
   });
 
+  if (scrollTopBtn) {
+    scrollTopBtn.addEventListener('click', () => {
+      const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      window.scrollTo({ top: 0, behavior: reduceMotion ? 'auto' : 'smooth' });
+    });
+  }
+
   // Run on load
   updateActiveSection();
+  if (scrollTopBtn) {
+    scrollTopBtn.classList.toggle('is-visible', window.scrollY > 420);
+  }
 
   // --- Metaballs Animation (Interactive) ---
   const initMetaballs = () => {
